@@ -1,0 +1,7 @@
+*.csv
+*.txt
+*.doc
+*.pdf
+*.xlsx
+.RData
+.RHistory
