@@ -5,3 +5,5 @@
 *.xlsx
 .RData
 .RHistory
+.Rhistory
+Dados/
