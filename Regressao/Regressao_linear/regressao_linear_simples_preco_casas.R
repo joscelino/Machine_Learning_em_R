@@ -1,0 +1,35 @@
+library('ggplot2')
+library('caTools')
+library('miscTools')
+
+base <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/house_prices.csv')
+set.seed(1)
+
+divisao <- sample.split(base$price, SplitRatio = 0.7)
+base_treinamento <- subset(base, divisao == TRUE)
+base_teste <- subset(base, divisao = FALSE)
+
+cor(base$sqft_living, base$price)
+
+# Aprendizado
+regressor <- lm(formula = price ~ sqft_living, data = base_treinamento)
+summary(regressor)
+
+previsoes_treinamento <- predict(regressor, newdata = base_treinamento[6])
+
+# Grafico
+ggplot() + geom_point(aes(x = base_treinamento$sqft_living, y = base_treinamento$price),
+                      colour = 'blue') + geom_line(aes(base_treinamento$sqft_living,
+                                                       y = previsoes_treinamento),
+                                                   colour = 'red')
+
+# Previsoes
+previsoes_teste <- predict(regressor, newdata = base_teste[6])
+
+# Calculo do erro
+resultado <- abs(base_teste[3] - previsoes_teste)
+
+erro_medio <- mean(resultado[['price']])
+
+# Calculo residual base de teste
+cr <- rSquared(base_teste[['price']], resid = base_teste[['price']] - previsoes_teste)

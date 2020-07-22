@@ -1,6 +1,6 @@
 library(e1071)
 
-base <- read.csv("risco_credito.csv")
+base <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/risco_credito.csv')
 classificador <- naiveBayes(x = base[-5], y = base$risco)
 print(classificador)
 

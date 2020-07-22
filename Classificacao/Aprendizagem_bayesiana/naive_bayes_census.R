@@ -2,7 +2,7 @@ library(e1071)
 library(caTools)
 library(caret)
 
-base = read.csv('census.csv')
+base = read.csv('D:/Projetos_em_R/Machine_Learning/Dados/census.csv')
 base$X = NULL
 summary(base)
 

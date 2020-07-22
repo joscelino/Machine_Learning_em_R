@@ -2,7 +2,7 @@ library(e1071)
 library(caTools)
 library(caret)
 
-base <- read.csv("credit_data.csv")
+base <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/credit_data.csv')
 base$clientid <- NULL
 summary(base)
 
