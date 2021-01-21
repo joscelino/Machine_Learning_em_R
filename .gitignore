@@ -1,9 +1,5 @@
-*.csv
-*.txt
-*.doc
-*.pdf
-*.xlsx
-.RData
-.RHistory
 .Rhistory
-Dados/
+project.Rproj
+.RData
+.Rproj.user*
+*.pdf

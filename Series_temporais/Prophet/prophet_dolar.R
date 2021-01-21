@@ -1,6 +1,6 @@
 library(prophet)
 
-df <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/dol.csv')
+df <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/dol3.csv')
 df$Volume <- NULL
 df$Open <- NULL
 df$High < NULL
@@ -13,7 +13,8 @@ colnames(df)[2] <- "y"
 
 # Treinamento
 modelo <- prophet(df, daily.seasonality=TRUE, yearly.seasonality=TRUE,
-                  weekly.seasonality = TRUE, seasonality.mode =  'multiplicative')
+                  weekly.seasonality = TRUE, initialize_scales = TRUE,
+                  seasonality.mode =  'multiplicative')
 
 future <- make_future_dataframe(modelo, periods = 30)
 tail(future)

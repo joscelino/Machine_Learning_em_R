@@ -1,6 +1,6 @@
-library('ggplot2')
+library(readr)
 
-base <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/plano_saude.csv')
+base <- read_csv('D:/Projetos_em_R/Machine_Learning/Dados/plano_saude.csv')
 
 # Analise de correlacao entre as variaveis
 cor(base$idade, base$custo)
@@ -19,10 +19,15 @@ cr <- summary(regressor)$adj.r.squared
 previsoes <- predict(regressor, newdata = base[-2])
 
 # Grafico
+library(ggplot2)
+library(plotly)
 
-ggplot() + geom_point(aes(x = base$idade, y = base$custo), colour = 'blue') +
+
+grafico <- ggplot() + geom_point(aes(x = base$idade, y = base$custo), colour = 'blue') +
   geom_line(aes(x = base$idade, y = previsoes), colour = 'red') + 
   ggtitle('Idade x Custo') + xlab('Idade') + ylab('Custo')
+
+ggplotly(grafico)
 
 # Previsao de novo valor
 idade <- c(57)
