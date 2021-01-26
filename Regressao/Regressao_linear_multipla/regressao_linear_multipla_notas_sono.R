@@ -1,6 +1,6 @@
 library(pacman)
 pacman::p_load(dplyr, readr, tibble, rstatix, ggplot2, car, plotly,
-               lmtest, QuantPsyc, psych, scatterplot3d)
+               lmtest, QuantPsyc, psych, scatterplot3d, RColorBrewer)
 
 # Importacao dos dados
 dados <- read_csv2("D:/Projetos_em_R/Modelos_Estatisticos/Analise_Exploratoria/Dados/BancoDeDados12.csv")
@@ -104,7 +104,8 @@ testesNormalidade(modelo$residuals)
 
 # Outliers nos residuos
 
-graphics::boxplot(modelo$residuals)
+graphics::boxplot(modelo$residuals, 
+                  col = RColorBrewer::brewer.pal(n = 9, name = "RdBu"))
 rstatix::identify_outliers(residuos)
 base::summary(stats::rstandard(modelo))
 
@@ -130,3 +131,4 @@ QuantPsyc::lm.beta(modelo2)
 # Obtencao do IC 95% para os coeficientes
 stats::confint(modelo)
 stats::confint(modelo2)
+

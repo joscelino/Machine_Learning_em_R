@@ -6,7 +6,8 @@ required_packages <- c(
 
 # install missing packages
 
-new.packages <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
+new.packages <- required_packages[!(required_packages %in% 
+                                      installed.packages()[,"Package"])]
 
 if (length(new.packages)) {
   install.packages(new.packages, dependencies = TRUE)
@@ -37,3 +38,6 @@ library(tsoutliers)
 library(ggplot2)
 library(plotly)
 library(prophet)
+library(tibble)
+library(readr)
+library(arules)
