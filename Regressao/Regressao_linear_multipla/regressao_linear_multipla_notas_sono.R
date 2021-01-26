@@ -132,3 +132,31 @@ QuantPsyc::lm.beta(modelo2)
 stats::confint(modelo)
 stats::confint(modelo2)
 
+# Comparacao de modelos
+# AIC e BIC - Comparacao entre quaisquer modelos
+AIC(modelo,modelo2) # Quanto menor AIC, melhor
+BIC(modelo,modelo2) # Quanto menor BIC, melhor
+
+# Comparacao entre modelos aninhados
+stats::anova(modelo, modelo2) # O melhor sera com menor RSS (Residuals of Squares)
+
+# Grafico de dispersao
+graf <- scatterplot3d::scatterplot3d(dados$Notas ~ dados$Tempo_Rev + dados$Tempo_Sono,
+                                     pch = 16, angle = 30, color = "steelblue",
+                                     box = FALSE, 
+                                     xlab = "Tempo de revisao",
+                                     ylab = "Tempo de sono",
+                                     zlab = "Notas")
+graf$plane3d(modelo, col = "black", draw_polygon = TRUE)
+
+
+############# SELECAO DE MODELOS
+library(MASS)
+
+modelo_inicial <- stats::lm(Notas ~ Tempo_Rev + Tempo_Sono, 
+                            data = dados)
+modelo_simples <- stats::lm(Notas ~ 1, data = dados)
+
+MASS::stepAIC(modelo_inicial, scope = list(upper = modelo_inicial,
+                                           lower = modelo_simples),
+              direction = "backward")
