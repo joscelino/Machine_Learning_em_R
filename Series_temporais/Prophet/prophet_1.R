@@ -1,6 +1,6 @@
 library(prophet)
 
-df <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/teste.csv')
+df <- read.csv('D:/Projetos_em_R/Machine_Learning/Series_temporais/Prophet/teste.csv')
 
 # Treinamento
 modelo <- prophet(df, daily.seasonality=TRUE)

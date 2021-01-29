@@ -3,7 +3,7 @@ library(prophet)
 df <- read.csv('D:/Projetos_em_R/Machine_Learning/Dados/dol3.csv')
 df$Volume <- NULL
 df$Open <- NULL
-df$High < NULL
+df$High <- NULL
 df$Low <- NULL
 df$Close <- NULL
 df[2] <- NULL
