@@ -1,6 +1,5 @@
 library(factoextra)
 library(ggplot2)
-library(factoextra)
 
 #Carregamento dos dados
 data("mtcars")
