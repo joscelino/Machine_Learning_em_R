@@ -50,7 +50,7 @@ fig5
 
 # Grafico de dispersao
 # Age x Final.wieght
-fig6 <- plot_ly(data = dadosCensus, x = ~age, y = ~final.weight, 
+fig6 <- plotly::plot_ly(data = dadosCensus, x = ~age, y = ~final.weight, 
                 color = ~relationship)
 fig6
 
