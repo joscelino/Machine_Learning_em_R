@@ -10,16 +10,17 @@ sigmoideDerivada <- function(sig) {
 }
 
 # Dados 
-entradas <- base::matrix(c(0,0,0,1,1,0,1,1), nrow = 4,
-                         ncol = 2, byrow = TRUE)
-saidas <- base::matrix(c(0,1,1,0))
-pesos0 <- base::matrix(c(stats::rnorm(1), stats::rnorm(1),
-                         stats::rnorm(1), stats::rnorm(1),
-                         stats::rnorm(1), stats::rnorm(1)),
-                      nrow = 2, ncol = 3, byrow = TRUE)
-pesos1 <- base::matrix(c(stats::rnorm(1), stats::rnorm(1), stats::rnorm(1)),
+entradas <- read.csv("D:/Projetos_em_R/Machine_Learning/Dados/entradas.csv")
+entradas <- data.matrix(entradas)
+
+saidas <- read.csv("D:/Projetos_em_R/Machine_Learning/Dados/saidas.csv")
+saidas <- data.matrix(saidas)
+
+pesos0 <- base::matrix(stats::runif(ncol(entradas) * 3, min = -1, max = 1),
+                       nrow = ncol(entradas), ncol = 3, byrow = TRUE)
+pesos1 <- base::matrix(stats::runif(3, min = -1, max = 1),
                        nrow = 3, ncol = 1, byrow = TRUE)
-epocas <- 1000000
+epocas <- 10
 momento <- 1
 taxaAprendizagem <- 0.3
 
@@ -52,4 +53,3 @@ for (j in 1:epocas) {
   pesos0 = (pesos0 * momento) + (pesosNovo0 * taxaAprendizagem)
   
 }
-                      
