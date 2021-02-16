@@ -1,4 +1,4 @@
-
+library(tibble)
 # Funcao de ativacao sigmoide
 sigmoide <- function(soma) {
   return(1 / (1 + base::exp(-soma)))
@@ -11,6 +11,7 @@ sigmoideDerivada <- function(sig) {
 
 # Dados 
 entradas <- read.csv("D:/Projetos_em_R/Machine_Learning/Dados/entradas.csv")
+tibble::glimpse(entradas)
 entradas <- data.matrix(entradas)
 
 saidas <- read.csv("D:/Projetos_em_R/Machine_Learning/Dados/saidas.csv")
@@ -53,3 +54,4 @@ for (j in 1:epocas) {
   pesos0 = (pesos0 * momento) + (pesosNovo0 * taxaAprendizagem)
   
 }
+
