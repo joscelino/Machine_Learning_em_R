@@ -1,7 +1,7 @@
 library(h2o)
 h2o.init()
 
-imp = read.csv("D://Projetos_em_R//auto_ml//Churn_treino.csv", sep = ";")
+imp = read.csv("D:/Projetos_em_R/Machine_Learning/Dados/Churn_treino.csv", sep = ";")
 
 # Pega nome da variavel dependente que deve estar na ultima coluna
 y = colnames(imp[length(imp)])
@@ -27,7 +27,7 @@ modelo = h2o.automl(x = colnames(treino[1:(length(imp) - 1)]),
 lb = as.data.frame(modelo@leaderboard)
 
 # Importando dados para previsao
-imp = read.csv("D://Projetos_em_R//auto_ml//Churn_prever.csv", sep = ";")
+imp = read.csv("D:/Projetos_em_R/Machine_Learning/Dados/Churn_prever.csv", sep = ";")
 imp = as.h2o(imp)
 
 previsao = h2o.predict(modelo@leader, imp)
