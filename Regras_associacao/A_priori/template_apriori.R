@@ -1,6 +1,7 @@
 library(readr)
 library(tibble)
 library(arules)
+library(arulesViz)
 
 # Mineracao dos dados
 dados <- read.csv2("D:/Projetos_em_R/Machine_Learning/Dados/mercado1.csv",
@@ -23,4 +24,15 @@ regras <- arules::apriori(data = transacoes,
 
 # Visualizando as regras geradas
 arules::inspect(arules::sort(regras, by = "lift"))
+
+# Visualizacao Scatter
+plot(regras, method = "scatter", engine = "htmlwidget", max = 300)
+
+# Visualizacao Grafo
+plot(regras, method = "graph", engine = "htmlwidget", max = 300)
+
+# Convertendo as regras para data frame
+df <- as(regras, "data.frame")
+View(df)
+
 
